@@ -1,0 +1,345 @@
+/* | IMPORTS */
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
+/* | CSS RESET  */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+input,
+button {
+    font: inherit;
+}
+
+/* | VARIABLES */
+:root[data-theme='light'] {
+    /* | COLORS  */
+    --background-primary: hsl(0, 0%, 98%);
+    --background-secondary: hsl(236, 33%, 92%);
+    --text-primary: hsl(235, 19%, 35%);
+    --text-secondary: hsl(236, 9%, 61%);
+    --box-shadow-color: rgba(0, 0, 0, 0.1);
+    --border-radio-color: black;
+
+    --background-image-url: url('images/bg-desktop-light.jpg');
+    --background-image-mobile-url: url('images/bg-mobile-light.jpg');
+
+}
+
+:root[data-theme='dark'] {
+    /* | COLORS */
+    --background-primary: hsl(235, 21%, 11%);
+    --background-secondary: hsl(235, 24%, 19%);
+    --text-primary: hsl(234, 39%, 85%);
+    --text-secondary: hsl(234, 11%, 52%);
+    --box-shadow-color: rgba(0, 0, 0, 0.4);
+    --border-radio-color: white;
+
+    --background-image-url: url('images/bg-desktop-dark.jpg');
+    --background-image-mobile-url: url('images/bg-mobile-dark.jpg');
+
+}
+
+:root {
+    /* | Primary  */
+    --selected-color: hsl(220, 98%, 61%);
+    --Check-Background: linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+    /* | FONT */
+    --body-fonts: 400 18px 'Josefin Sans';
+    --header-fonts: 700 2.5rem 'Josefin Sans';
+    --controls-buttons-fonts: 700 15px 'Josefin Sans';
+    --footer-fonts: 700 15px 'Josefin Sans';
+}
+
+/* | GENERAL STYLES */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background-image: var(--background-image-url);
+    background-size: 100% 35%;
+    background-repeat: no-repeat;
+    background-color: var(--background-secondary);
+    color: var(--text-primary);
+    font: var(--body-fonts);
+}
+
+/* | UTILITY CLASS */
+.check-icon {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    padding: 3px;
+    background: var(--Check-Background);
+    margin-left: 8px;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: var(--text-secondary);
+}
+
+.selected {
+    color: var(--selected-color);
+}
+
+.media-div {
+    display: none;
+}
+
+/* | MAIN */
+main {
+    width: 600px;
+    height: 73vh;
+}
+
+/* | HEADER */
+header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.header-title {
+    color: #FFF;
+    letter-spacing: 15px;
+    text-transform: uppercase;
+    font: var(--header-fonts);
+}
+
+.theme-toggle-icon {
+    width: 23px;
+    height: 23px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+/* | todo-container */
+.todo-list {
+    box-shadow: 0px 4px 6px var(--box-shadow-color);
+    border-radius: 10px;
+}
+
+.todo-input-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 30px;
+    box-shadow: 0px 2px 4px var(--box-shadow-color);
+}
+
+.todo-radio {
+    position: absolute;
+    margin-left: 30px;
+    width: 25px;
+    height: 25px;
+    appearance: none;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+    background-color: var(--background-primary);
+    border: 2px solid var(--text-primary);
+    box-shadow: 0 0 0 2px var(--background-primary);
+}
+
+.todo-text-input {
+    width: 100%;
+    padding: 23px;
+    border: none;
+    border-radius: 10px;
+    padding-left: 80px;
+    background-color: var(--background-primary);
+    color: var(--text-primary);
+    box-shadow: 0px 2px 4px var(--box-shadow-color);
+}
+
+.todo-text-input::placeholder {
+    color: var(--text-secondary);
+}
+
+.todo-list .todo-item:first-child {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.todo-item {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 2px;
+    padding: 23px;
+    background-color: var(--background-primary);
+    box-shadow: 0px 4px 6px var(--box-shadow-color);
+}
+
+.todo-text {
+    padding-left: 60px;
+}
+
+.delete-btn {
+    margin-left: auto;
+    border: none;
+    background-color: var(--background-primary);
+    cursor: pointer;
+}
+
+.todo-item .todo-radio {
+    margin-left: 8px;
+}
+
+.todo-controls {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--background-primary);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 15px 33px;
+    box-shadow: 0px 4px 6px var(--box-shadow-color);
+}
+
+.todo-sections .filter-btn {
+    margin-left: 10px;
+}
+
+.filter-btn,
+.items-left {
+    border: none;
+    background-color: var(--background-primary);
+    color: var(--text-secondary);
+    font: var(--controls-buttons-fonts);
+}
+
+.filter-btn {
+    cursor: pointer;
+}
+
+.filter-btn:hover {
+    color: var(--text-primary);
+}
+
+/* | FOOTER */
+footer {
+    text-align: center;
+    color: var(--text-secondary);
+    padding-top: 50px;
+    font: var(--footer-fonts);
+}
+
+@media screen and (max-width: 768px) {
+    :root {
+        /* | FONT */
+        --body-fonts: 400 16px 'Josefin Sans';
+        --header-fonts: 700 2rem 'Josefin Sans';
+        --controls-buttons-fonts: 700 13px 'Josefin Sans';
+        --footer-fonts: 700 13px 'Josefin Sans';
+    }
+
+    body {
+        background-image: var(--background-image-mobile-url);
+    }
+
+    main {
+        width: 80%;
+    }
+
+    .todo-controls {
+        display: none;
+    }
+
+    .todo-input-wrapper {
+        margin-bottom: 20px;
+    }
+
+    header {
+        margin-bottom: 30px;
+    }
+
+    .check-icon,
+    .todo-radio {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .todo-text-input {
+        padding: 20px;
+        padding-left: 80px;
+    }
+
+    .delete-icon {
+        width: 15px;
+        height: 15px;
+    }
+
+    .todo-item {
+        padding: 18px;
+    }
+
+    .todo-controls-media {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 2px;
+        background-color: var(--background-primary);
+        box-shadow: 0px 4px 6px var(--box-shadow-color);
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        padding: 18px;
+    }
+
+    .todo-sections-media {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 2px;
+        padding: 20px;
+        background-color: var(--background-primary);
+        box-shadow: 0px 4px 6px var(--box-shadow-color);
+        border-radius: 10px;
+        margin-top: 20px;
+    }
+
+    .todo-sections-media .filter-btn {
+        margin-left: 20px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    :root {
+        /* | FONT */
+        --body-fonts: 400 14px 'Josefin Sans';
+        --header-fonts: 700 1.7rem 'Josefin Sans';
+        --controls-buttons-fonts: 700 11px 'Josefin Sans';
+        --footer-fonts: 700 11px 'Josefin Sans';
+    }
+}
+
+@media screen and (max-width: 375px) {
+    :root {
+        /* | FONT */
+        --body-fonts: 400 12px 'Josefin Sans';
+        --header-fonts: 700 1.2rem 'Josefin Sans';
+        --controls-buttons-fonts: 700 9px 'Josefin Sans';
+        --footer-fonts: 700 9px 'Josefin Sans';
+    }
+}
